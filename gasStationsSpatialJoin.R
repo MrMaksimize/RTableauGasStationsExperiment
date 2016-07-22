@@ -43,6 +43,6 @@ gasStations@data <- as.data.frame(bind_cols(gasStations@data, gasStationsCPD))
 gsDF <- spTransform(gasStations, CRS(latlon))
 
 gsDF <- as.data.frame(gsDF) %>%
-    rename(latitude = coords.x1, longitude = coords.x2)
+    rename(longitude = coords.x1, latitude = coords.x2)
 
 write.csv(gsDF, file = "./data/tableau_out/gas_stations.csv")

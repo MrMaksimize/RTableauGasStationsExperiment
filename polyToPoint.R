@@ -1,8 +1,13 @@
+## I AM BROKEN
+## DO NOT USE ME BECAUSE I DONT KNOW HOW TO
+## CONVERT PROJECTIONS
 directory <- "."
 fileName <- "./data/Community_Plan_SD/Community_Plan_SD.shp"
 
+library(rgdal)
 library(rgeos)
 library(maptools)
+library(dplyr)
 
 setwd(directory)
 
@@ -35,8 +40,8 @@ for(i in 1:length(polygons)){
 
 # Not super clean, TODO fix this.
 combinedData <- merge(data, coordinates)
-combinedData <- SpatialPointsDataFrame(select(combinedData, latitude, longitude), 
-                              select(combinedData, -latitude, -longitude))
+combinedData <- SpatialPointsDataFrame(select(combinedData, longitude, latitude), 
+                              select(combinedData, -longitude, -latitude))
 # First, set the original CRS
 combinedData@proj4string <- shapeFile@proj4string
 
